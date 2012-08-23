@@ -1,33 +1,33 @@
-# Sample gitconfig
-#
-# You probably want to change the [user] section here since you are not me.
+[alias]
+    unstage = reset HEAD --
+    discard = checkout --
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+    ui = true
+
+[core]
+    autocrlf = input
+    excludesfile = ~/.gitignore
+    editor = vim
+
+[credential]
+    helper = osxkeychain
+
+[difftool]
+    prompt = false
+
+[help]
+    autocorrect = 1
 
 [hub]
-        protocol = https
-[user]
-        name = Zach Holman
-        email = zach@zachholman.com
-[credential]
-        helper = osxkeychain
-[alias]
-        co = checkout
-        promote = !$ZSH/bin/git-promote
-        wtf     = !$ZSH/bin/git-wtf
-        rank-contributers = !$ZSH/bin/git-rank-contributers
-        count   = !git shortlog -sn
-[color]
-        diff = auto
-        status = auto
-        branch = auto
-        ui = true
-[core]
-        excludesfile = ~/.gitignore
-        editor = vim
-[apply]
-        whitespace = nowarn
+    protocol = https
+
 [mergetool]
-        keepBackup = false
-[difftool]
-        prompt = false
-[help]
-        autocorrect = 1
+    keepBackup = false
+
+[user]
+    email = alfonso@al.fon.so
+    name = Alfonso Boza

@@ -1,12 +1,9 @@
-set noswapfile
-
 " ----------------------------------------------------------------------------
 "  Text Formatting
 " ----------------------------------------------------------------------------
 
 set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
-inoremap # X<BS>#
 set nowrap                 " do not wrap lines
 set softtabstop=2          " yep, two
 set shiftwidth=2           " ..
@@ -28,7 +25,6 @@ let mapleader = ","
 " exit to normal mode with 'jj'
 inoremap jj <ESC>
 
-
 " reflow paragraph with Q in normal and visual mode
 nnoremap Q gqap
 vnoremap Q gq
@@ -44,6 +40,16 @@ vnoremap <Down> gj
 vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
+
+" move quickly between panes
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" remove highlights
+nnoremap <silent> <C-m> :silent noh<CR>
+
 
 " ----------------------------------------------------------------------------
 "  UI
@@ -72,7 +78,8 @@ set mat=5                  " duration to show matching brace (1/10 sec)
 set incsearch              " do incremental searching
 set laststatus=2           " always show the status line
 set ignorecase             " ignore case when searching
-set nohlsearch             " don't highlight searches
+set smartcase              " ...unless query contains at least one capital
+set hlsearch               " highlight searches
 set visualbell             " shut the fuck up
 
 
@@ -84,3 +91,9 @@ function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
+
+
+" ---------------------------------------------------------------------------
+"  Backups
+" ---------------------------------------------------------------------------
+set backupdir=/tmp         " save backups to /tmp

@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# Alias for Mac OS X's `open` command
+#
+# Usage:
+#   o [file_or_directory]
+#
+# Arguments:
+#   file_or_directory - file or directory to open (default: current directory)
+
+if [ $(uname) != 'Darwin' ]; then
+  echo 'Expected Mac OS X environment.' >&2
+  exit 1
+else
+  if [ "$#" -gt 0 ]; then
+    exec open $@
+  else
+    exec open .
+  fi
+fi

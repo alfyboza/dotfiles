@@ -1,0 +1,4 @@
+set-option -g prefix C-a  # make the command key Ctrl-a
+unbind-key C-b            # unbind the old command key
+bind-key a send-prefix    # 'Ctrl-a a' sends literal 'Ctrl-a'
+bind-key C-a last-window  # 'Ctrl-a Ctrl-a' switches to last window

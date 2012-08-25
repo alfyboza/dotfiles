@@ -1,6 +1,7 @@
 [alias]
-    unstage = reset HEAD --
     discard = checkout --
+    squash = merge --squash
+    unstage = reset HEAD --
 
 [color]
     branch = auto
@@ -10,8 +11,8 @@
 
 [core]
     autocrlf = input
-    excludesfile = ~/.gitignore
     editor = vim
+    excludesfile = ~/.gitignore
 
 [credential]
     helper = osxkeychain

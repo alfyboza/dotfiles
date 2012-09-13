@@ -1,0 +1,1 @@
+../../lvimrc/plugin/localvimrc.vim

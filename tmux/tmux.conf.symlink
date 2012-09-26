@@ -1,4 +1,12 @@
-set-option -g prefix C-a  # make the command key Ctrl-a
-unbind-key C-b            # unbind the old command key
-bind-key a send-prefix    # 'Ctrl-a a' sends literal 'Ctrl-a'
-bind-key C-a last-window  # 'Ctrl-a Ctrl-a' switches to last window
+# make the command key Ctrl-a
+set-option -g prefix C-a
+unbind-key C-b
+
+# enable vi mode
+set-window-option -g mode-keys vi
+
+# adjust key bindings
+bind-key a send-prefix                # 'Ctrl-a a' sends literal 'Ctrl-a'
+bind-key C-a last-window              # 'Ctrl-a Ctrl-a' switches to last window
+bind-key -t vi-copy v begin-selection # selecting and copying text mimics vi
+bind-key -t vi-copy y copy-selection

@@ -29,6 +29,12 @@
 [mergetool]
     keepBackup = false
 
+[tar "tbz2"]
+    command = bzip2 -z9
+
+[tar "tar.bz2"]
+    command = bzip2 -z9
+
 [user]
     email = alfonso@al.fon.so
     name = Alfonso Boza

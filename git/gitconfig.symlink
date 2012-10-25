@@ -29,6 +29,9 @@
 [mergetool]
     keepBackup = false
 
+[push]
+	default = simple
+
 [tar "tbz2"]
     command = bzip2 -z9
 

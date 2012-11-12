@@ -1,3 +1,0 @@
-[submodule "vim/lvimrc"]
-	path = vim/lvimrc
-	url = git://github.com/embear/vim-localvimrc.git

@@ -3,7 +3,10 @@
 # bootstrap installs things.
 
 # If on OS X, run Homebrew
-test "`uname`" != 'Linux' && . script/homebrew
+if [ $(uname -s) = "Darwin" ] 
+then
+	. script/homebrew
+fi
 
 # Run the install (I'd like to pull this out of rake, eventually)
 rake install

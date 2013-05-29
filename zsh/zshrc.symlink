@@ -4,6 +4,11 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/projects
 
+# load nvm if it exists
+if [[ -r ~/.nvm/nvm.sh ]]; then
+  source ~/.nvm/nvm.sh
+fi
+
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]

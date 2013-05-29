@@ -1,4 +1,4 @@
-if [[ $(uname) == 'Darwin' ]]; then
+if [[ $(uname) == 'Darwin' && -d "$HOME/.ec2" ]]; then
   # Copied from `brew info ec2-api-tools` and `brew info ec2-ami-tools`
   export JAVA_HOME="$(/usr/libexec/java_home)"
   export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"

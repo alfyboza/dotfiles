@@ -50,9 +50,17 @@ need_push () {
 rb_prompt(){
   if (( $+commands[rbenv] ))
   then
-	  echo "%{$fg_bold[yellow]%}$(rbenv version | awk '{print $1}')%{$reset_color%} "
+	  echo "[%{$fg_bold[red]%}ruby: %{$fg_bold[yellow]%}v$(rbenv version | awk '{print $1}')%{$reset_color%}] "
 	else
 	  echo ""
+  fi
+}
+
+nodejs_prompt() {
+  if which nvm 2>&1 >/dev/null; then
+    echo "[%{$fg_bold[green]%}node: %{$fg_bold[yellow]%}$(nvm ls | grep 'current:' | awk '{ print $2; }')%{$reset_color%}] "
+  else
+    echo ""
   fi
 }
 
@@ -79,7 +87,7 @@ directory_name(){
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(rb_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n$(rb_prompt)$(nodejs_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
 }

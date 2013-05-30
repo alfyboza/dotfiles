@@ -42,6 +42,12 @@ setup_gitconfig () {
   fi
 }
 
+update_submodules () {
+  info 'installing submodules'
+
+  git submodule update --init
+}
+
 link_files () {
   ln -s $1 $2
   success "linked $1 to $2"
@@ -115,6 +121,7 @@ install_dotfiles () {
 }
 
 setup_gitconfig
+update_submodules
 install_dotfiles
 
 # If we are on a mac, lets install and setup homebrew

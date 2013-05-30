@@ -97,3 +97,9 @@ map ,s :call StripWhitespace ()<CR>
 "  Backups
 " ---------------------------------------------------------------------------
 set backupdir=/tmp         " save backups to /tmp
+
+" ---------------------------------------------------------------------------
+"  Plugins
+" ---------------------------------------------------------------------------
+runtime bundle/pathogen/autoload/pathogen.vim
+execute pathogen#infect()

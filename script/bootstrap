@@ -45,7 +45,9 @@ setup_gitconfig () {
 update_submodules () {
   info 'installing submodules'
 
-  git submodule update --init
+  git submodule update --init 2>&1 > /dev/null
+
+  success 'submodules installed'
 }
 
 link_files () {

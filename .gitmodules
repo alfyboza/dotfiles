@@ -13,3 +13,6 @@
 [submodule "sublime2/Packages/Git"]
 	path = sublime2/Packages/Git
 	url = git://github.com/kemayo/sublime-text-2-git.git
+[submodule "sublime2/Packages/Cucumber"]
+	path = sublime2/Packages/Cucumber
+	url = git://github.com/drewda/cucumber-sublime2-bundle.git

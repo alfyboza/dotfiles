@@ -1,12 +1,23 @@
-#!/bin/sh
-# Setup a machine for Sublime Text 2
-set -x
+#!/bin/bash
 
-# symlink settings in
-sublime_dir=~/Library/Application\ Support/Sublime\ Text\ 2/Packages
-mv "$sublime_dir/User" "$sublime_dir/User.backup"
-ln -s "$ZSH/sublime2/User" "$sublime_dir"
+# abs_path: credit to http://stackoverflow.com/a/13087801
+abs_path () {
+  pushd "$1" >/dev/null
+  pwd
+  popd >/dev/null
+}
 
-# Grab the Soda theme
-cd "$sublime_dir"
-git clone https://github.com/buymeasoda/soda-theme/ "Theme - Soda"
+# symlink everything in ./Packages/ to Sublime Text's Packages/
+SUBLIME_DIR=$HOME/Library/Application\ Support/Sublime\ Text\ 2/Packages
+PACKAGE_DIR="$(abs_path $(dirname $0)/Packages)"
+for DIR in $PACKAGE_DIR/*; do
+  NAME="$SUBLIME_DIR/$(basename "$DIR")"
+  if [[ -d "$NAME" ]]; then
+    if [[ -L "$NAME" ]]; then
+      rm "$NAME"
+    else
+      mv "$NAME" "$NAME.backup"
+    fi
+  fi
+  ln -s "$DIR" "$NAME"
+done

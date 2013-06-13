@@ -48,11 +48,12 @@ need_push () {
 }
 
 rb_prompt(){
-  if (( $+commands[rbenv] ))
-  then
-	  echo "[%{$fg_bold[red]%}ruby: %{$fg_bold[yellow]%}v$(rbenv version | awk '{print $1}')%{$reset_color%}] "
-	else
-	  echo ""
+  if (( $+commands[rbenv] )); then
+    local version=$(rbenv version | awk '{ print $1; }')
+    [[ $version != 'system' ]] && version="v$version"
+    echo "[%{$fg_bold[red]%}ruby: %{$fg_bold[yellow]%}$version%{$reset_color%}] "
+  else
+    echo ""
   fi
 }
 

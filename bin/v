@@ -1,0 +1,11 @@
+#!/bin/bash
+
+here=$(pwd)
+if [[ -z "$1" ]]; then
+  envs=$(/bin/ls $here/.env* | /usr/bin/sed 's/.env_//')
+  for e in $envs; do
+    echo $(basename $e)
+  done
+else
+  /bin/ln -sfv $here/.env_$1 $here/.env
+fi

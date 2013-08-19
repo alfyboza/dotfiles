@@ -2,7 +2,7 @@
 
 here=$(pwd)
 if [[ -z "$1" ]]; then
-  envs=$(/bin/ls $here/.env* | /usr/bin/sed 's/.env_//')
+  envs=$(/bin/ls $here/.env_* | /usr/bin/sed 's/.env_//')
   for e in $envs; do
     echo $(basename $e)
   done

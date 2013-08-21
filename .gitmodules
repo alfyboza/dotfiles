@@ -19,3 +19,6 @@
 [submodule "sublime2/Packages/CoffeeScriptHaml"]
 	path = sublime2/Packages/CoffeeScriptHaml
 	url = git@github.com:jisaacks/CoffeeScriptHaml.git
+[submodule "sublime2/Packages/Markdown Extended"]
+	path = sublime2/Packages/Markdown Extended
+	url = git://github.com/jonschlinkert/sublime-markdown-extended.git

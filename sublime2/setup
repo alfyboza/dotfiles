@@ -12,8 +12,12 @@ SUBLIME_DIR=$HOME/Library/Application\ Support/Sublime\ Text\ 2/Packages
 PACKAGE_DIR="$(abs_path $(dirname $0)/Packages)"
 for DIR in $PACKAGE_DIR/*; do
   NAME="$SUBLIME_DIR/$(basename "$DIR")"
-  if [[ -e "$NAME" && ! -L "$NAME" ]]; then
-    mv "$NAME" "$NAME.backup"
+  if [[ -e "$NAME" ]]; then
+    if [[ -L "$NAME" ]]; then
+      rm "$NAME"
+    else
+      mv "$NAME" "$NAME.backup"
+    fi
   fi
   ln -sfv "$DIR" "$NAME"
 done

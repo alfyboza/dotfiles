@@ -2,10 +2,15 @@
 
 here=$(pwd)
 if [[ -z "$1" ]]; then
-  envs=$(/bin/ls $here/.env_* | /usr/bin/sed 's/.env_//')
-  for e in $envs; do
-    echo $(basename $e)
-  done
+  envs=$(/bin/ls -1 $here/.env_* 2>&1)
+  if [[ $? -ne 0 ]]; then
+    echo 'No .env files found.' >&2
+    exit 1
+  else
+    for e in $(echo $envs | /usr/bin/sed 's/.env_//g'); do
+      echo $(basename $e)
+    done
+  fi
 else
   /bin/ln -sfv $here/.env_$1 $here/.env
 fi

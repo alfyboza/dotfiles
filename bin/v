@@ -1,14 +1,21 @@
 #!/bin/bash
 
 here=$(pwd)
+
 if [[ -z "$1" ]]; then
   envs=$(/bin/ls -1 $here/.env_* 2>&1)
   if [[ $? -ne 0 ]]; then
     echo 'No .env files found.' >&2
     exit 1
   else
-    for e in $(echo $envs | /usr/bin/sed 's/.env_//g'); do
-      echo $(basename $e)
+    link=$(readlink $here/.env)
+    for e in $(echo $envs); do
+      echo -n $(basename $(echo $e | sed 's/.env_//g'))
+      if [[ $link == $e ]]; then
+        echo '*'
+      else
+        echo ''
+      fi
     done
   fi
 else

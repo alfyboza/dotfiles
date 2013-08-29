@@ -22,3 +22,6 @@
 [submodule "sublime2/Packages/Markdown Extended"]
 	path = sublime2/Packages/Markdown Extended
 	url = git://github.com/jonschlinkert/sublime-markdown-extended.git
+[submodule "sublime2/Packages/Sass"]
+	path = sublime2/Packages/Sass
+	url = git://github.com/nathos/sass-textmate-bundle.git

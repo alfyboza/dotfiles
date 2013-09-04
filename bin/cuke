@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# Usage: cuke [sub-task]
+#
+#
+# `cuke` is a mere wrapper for `bundle exec rake cucumber`. If a sub-task is
+# specified, the resulting command is `bundle exec rake cucumber:$sub_task`.
+
+run () {
+  local command="$@"
+  echo "$(tput bold)$(tput setaf 4)==>$(tput sgr0) $(tput bold)$command$(tput sgr0)"
+  exec $command
+}
+
+if [[ -z "$1" ]]; then
+  run bundle exec rake cucumber
+else
+  run bundle exec rake "cucumber:$1"
+fi
+

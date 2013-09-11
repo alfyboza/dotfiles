@@ -1,23 +1,71 @@
 #!/bin/bash
+#
+# Usage: v [command [options]]
+#
+# Simplifies management of .env files.
 
 here=$(pwd)
 
-if [[ -z "$1" ]]; then
-  envs=$(/bin/ls -1 $here/.env_* 2>&1)
+# displays help
+v_help () {
+  echo "Usage: v [command [options]]" >&2
+  echo "" >&2
+  echo "Commands:" >&2
+  echo "  ls                Lists available environments. Default if command unspecified." >&2
+  echo "  run COMMAND       Exports active .env, then runs COMMAND." >&2
+  echo "  set ENVIRONMENT   Sets ENVIRONMENT as active." >&2
+  echo "" >&2
+}
+
+# lists available environments
+v_ls () {
+  local envs
+  envs=$(ls -1 "$here"/.env_* 2>&1)
   if [[ $? -ne 0 ]]; then
     echo 'No .env files found.' >&2
     exit 1
   else
-    link=$(readlink $here/.env)
-    for e in $(echo $envs); do
-      echo -n $(basename $(echo $e | sed 's/.env_//g'))
-      if [[ $link == $e ]]; then
-        echo '*'
-      else
-        echo ''
-      fi
-    done
+    local link=$(readlink "$here/.env")
+    echo "$envs" | awk '{ if ($0 == "'"$link"'") print $0 "*"; else print; }' | xargs basename | sed 's/.env_//g'
   fi
-else
-  /bin/ln -sfv $here/.env_$1 $here/.env
+}
+
+# runs command
+v_run() {
+  if [[ -z "$@" ]]; then
+    echo 'Usage: v run COMMAND' >&2
+    exit 1
+  else
+    cat "$here/.env" | sed '/^#/d' | awk '/./' | paste -s -d ' ' - | xargs -J % /usr/bin/env % "$@"
+  fi
+}
+
+# sets active environment
+v_set () {
+  if [[ -z "$1" ]]; then
+    echo 'Usage: v set ENVIRONMENT' >&2
+    exit 1
+  else
+    ln -sfv "$here/.env_$1" "$here/.env"
+  fi
+}
+
+# default to `ls` command
+if [[ -z "$1" ]]; then
+  set ls
 fi
+
+# run appropriate command
+command="$1"
+shift
+case "$command" in
+  ls)
+    v_ls;;
+  set)
+    v_set $*;;
+  run)
+    v_run $*;;
+  *)
+    v_help
+    exit 1;;
+esac

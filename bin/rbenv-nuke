@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# Summary: Nukes the "ruby-" prefix in .ruby-version set by rvm
+#
+# Usage: rbenv nuke
+
+set -e
+test -n "$RBENV_DEBUG" && set -x
+
+# Update .ruby-version
+if [[ -ef .ruby-version ]]; then
+  version=$(rbenv-version-file-read .ruby-version)
+  test "${version%%-*}" == 'ruby' && rbenv-version-file-write .ruby-version "${version#ruby-}"
+fi
+

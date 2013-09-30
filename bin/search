@@ -5,4 +5,5 @@
 set -e
 
 # use -iru to search directories ack usually ignores (like .git)
-ack -i $1
+ack -i $*
+

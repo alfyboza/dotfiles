@@ -10,9 +10,6 @@
 [submodule "sublime2/Packages/Theme - Soda"]
 	path = sublime2/Packages/Theme - Soda
 	url = git://github.com/buymeasoda/soda-theme
-[submodule "sublime2/Packages/Git"]
-	path = sublime2/Packages/Git
-	url = git://github.com/kemayo/sublime-text-2-git.git
 [submodule "sublime2/Packages/Cucumber"]
 	path = sublime2/Packages/Cucumber
 	url = git://github.com/drewda/cucumber-sublime2-bundle.git
@@ -25,3 +22,6 @@
 [submodule "sublime2/Packages/Sass"]
 	path = sublime2/Packages/Sass
 	url = git://github.com/nathos/sass-textmate-bundle.git
+[submodule "sublime2/Packages/Theme - Bluebird"]
+	path = sublime2/Packages/Theme - Bluebird
+	url = git://github.com/mbixby/bluebird.git

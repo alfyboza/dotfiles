@@ -1,16 +1,31 @@
 {
 	"auto_complete": false,
-	"color_scheme": "Packages/Color Scheme - Default/Solarized (Light).tmTheme",
+	"bold_folder_labels": false,
+	"caret_style": "smooth",
+	"close_windows_when_empty": false,
+	"color_scheme": "Packages/Theme - Bluebird/color-scheme/Github.tmTheme",
+	"custom_folder_icons": true,
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Source Code Pro",
 	"font_size": 12.0,
+	"gutter": false,
+	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
 	],
+	"line_numbers": true,
+	"line_padding_bottom": 0,
+	"line_padding_top": 4,
+	"scroll_past_end": true,
+	"show_minimap": false,
+	"show_tab_close_buttons": false,
 	"soda_folder_icons": true,
 	"tab_size": 2,
 	"theme": "Soda Light.sublime-theme",
 	"translate_tabs_to_spaces": true,
+	"use_simple_full_screen": true,
 	"trim_trailing_white_space_on_save": true,
-	"vintage_start_in_command_mode": true
+	"vintage_start_in_command_mode": true,
+	"word_wrap": true,
+	"wrap_width": 80
 }

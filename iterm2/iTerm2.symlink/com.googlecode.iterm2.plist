@@ -50,6 +50,8 @@
 	<false/>
 	<key>HideActivityIndicator</key>
 	<false/>
+	<key>HideMenuBarInFullscreen</key>
+	<true/>
 	<key>HideScrollbar</key>
 	<false/>
 	<key>HideTab</key>
@@ -89,11 +91,11 @@
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
 	<key>NSWindow Frame Preferences</key>
-	<string>258 166 924 485 0 0 2560 1418 </string>
+	<string>-1296 122 924 485 -1366 66 1366 746 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 688 1130 730 0 0 2560 1418 </string>
+	<string>5 4 1361 730 0 0 1366 746 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 736 1277 682 0 0 2560 1418 </string>
+	<string>0 32 1361 714 0 0 1366 746 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>472 285 1277 682 0 0 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -1579,6 +1581,8 @@
 			<string>~</string>
 		</dict>
 	</array>
+	<key>NoSyncNeverRemindPrefsChangesCopy</key>
+	<true/>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
 	<key>OpenArrangementAtStartup</key>
@@ -1625,7 +1629,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>~/.dotfiles/iterm2/iTerm2.symlink</string>
+	<string>~/.iTerm2</string>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -1641,7 +1645,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-11-12T15:46:28Z</date>
+	<date>2013-11-22T15:17:45Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -1675,7 +1679,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>Lucida Grande</string>
+	<string>.Lucida Grande UI</string>
 	<key>WindowNumber</key>
 	<true/>
 	<key>WindowStyle</key>
@@ -1687,6 +1691,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>1.0.0.20130624</string>
+	<string>1.0.0.20131116</string>
 </dict>
 </plist>

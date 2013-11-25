@@ -7,14 +7,13 @@
 # specified, the resulting command is `bundle exec rake cucumber:$sub_task`.
 
 run () {
-  local command="$@"
+  local command="bundle exec rake $@"
   echo "$(tput bold)$(tput setaf 4)==>$(tput sgr0) $(tput bold)$command$(tput sgr0)"
-  exec $command
+  exec /usr/bin/env RAILS_ENV=test RACK_ENV=test $command
 }
 
 if [[ -z "$1" ]]; then
-  run bundle exec rake cucumber
+  run cucumber
 else
-  run bundle exec rake "cucumber:$1"
+  run "cucumber:$1"
 fi
-

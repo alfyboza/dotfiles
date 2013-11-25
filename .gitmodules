@@ -25,3 +25,6 @@
 [submodule "sublime2/Packages/Theme - Bluebird"]
 	path = sublime2/Packages/Theme - Bluebird
 	url = git://github.com/mbixby/bluebird.git
+[submodule "sublime2/Packages/Origami"]
+	path = sublime2/Packages/Origami
+	url = git://github.com/SublimeText/Origami.git

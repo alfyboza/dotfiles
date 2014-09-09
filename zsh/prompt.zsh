@@ -45,33 +45,19 @@ need_push () {
   fi
 }
 
-rb_prompt(){
-  if (( $+commands[rbenv] )); then
-    local version=$(rbenv version | awk '{ print $1; }')
-    [[ $version != 'system' ]] && version="v$version"
-    echo "[%{$fg_bold[red]%}ruby: %{$fg_bold[yellow]%}$version%{$reset_color%}] "
-  else
-    echo ""
-  fi
-}
-
-nodejs_prompt() {
-  if which nvm 2>&1 >/dev/null; then
-    echo "[%{$fg_bold[green]%}node: %{$fg_bold[yellow]%}$(nvm ls | grep 'current:' | awk '{ print $2; }')%{$reset_color%}] "
-  else
-    echo ""
-  fi
-}
-
 directory_name(){
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_bold[cyan]%}%~%\/%{$reset_color%}"
 }
 
 exit_value() {
   test $? -ne 0 && echo "[%{$fg_bold[red]%}%?%{$reset_color%}]"
 }
 
-export PROMPT=$'\n$(rb_prompt)$(nodejs_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
+current_host() {
+  [[ -z "$SSH_CLIENT" ]] || echo "%{$fg_bold[yellow]%}%m%{$reset_color%}: "
+}
+
+export PROMPT=$'\n$(current_host)in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT='$(exit_value)'
 }

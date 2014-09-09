@@ -20,6 +20,7 @@
 --ignore-directory=is:_build
 --ignore-directory=is:cover_db
 --ignore-directory=is:log
+--ignore-directory=is:bower_components
 --ignore-directory=is:node_modules
 --ignore-directory=is:CMakeFiles
 --ignore-file=ext:bak

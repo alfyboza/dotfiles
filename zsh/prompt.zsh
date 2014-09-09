@@ -65,32 +65,17 @@ nodejs_prompt() {
   fi
 }
 
-# This keeps the number of todos always available the right hand side of my
-# command line. I filter it to only count those tagged as "+next", so it's more
-# of a motivation to clear out the list.
-todo(){
-  if (( $+commands[todo.sh] ))
-  then
-    num=$(echo $(todo.sh ls +next | wc -l))
-    let todos=num-2
-    if [ $todos != 0 ]
-    then
-      echo "$todos"
-    else
-      echo ""
-    fi
-  else
-    echo ""
-  fi
-}
-
 directory_name(){
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
+exit_value() {
+  test $? -ne 0 && echo "[%{$fg_bold[red]%}%?%{$reset_color%}]"
+}
+
 export PROMPT=$'\n$(rb_prompt)$(nodejs_prompt)in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
+  export RPROMPT='$(exit_value)'
 }
 
 precmd() {

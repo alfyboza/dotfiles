@@ -1,7 +1,0 @@
-[{
-  "keys": ["super+alt+l"],
-  "command": "toggle_setting",
-  "args": {
-    "setting": "line_numbers"
-  }
-}]

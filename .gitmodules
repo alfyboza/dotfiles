@@ -4,27 +4,3 @@
 [submodule "vim/vim.symlink/bundle/coffee-script"]
 	path = vim/vim.symlink/bundle/coffee-script
 	url = git://github.com/kchmck/vim-coffee-script.git
-[submodule "sublime2/Packages/CoffeeScript"]
-	path = sublime2/Packages/CoffeeScript
-	url = git://github.com/Xavura/CoffeeScript-Sublime-Plugin.git
-[submodule "sublime2/Packages/Theme - Soda"]
-	path = sublime2/Packages/Theme - Soda
-	url = git://github.com/buymeasoda/soda-theme
-[submodule "sublime2/Packages/Cucumber"]
-	path = sublime2/Packages/Cucumber
-	url = git://github.com/drewda/cucumber-sublime2-bundle.git
-[submodule "sublime2/Packages/CoffeeScriptHaml"]
-	path = sublime2/Packages/CoffeeScriptHaml
-	url = git://github.com/jisaacks/CoffeeScriptHaml.git
-[submodule "sublime2/Packages/Markdown Extended"]
-	path = sublime2/Packages/Markdown Extended
-	url = git://github.com/jonschlinkert/sublime-markdown-extended.git
-[submodule "sublime2/Packages/Sass"]
-	path = sublime2/Packages/Sass
-	url = git://github.com/nathos/sass-textmate-bundle.git
-[submodule "sublime2/Packages/Theme - Bluebird"]
-	path = sublime2/Packages/Theme - Bluebird
-	url = git://github.com/mbixby/bluebird.git
-[submodule "sublime2/Packages/Origami"]
-	path = sublime2/Packages/Origami
-	url = git://github.com/SublimeText/Origami.git

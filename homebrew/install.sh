@@ -14,6 +14,6 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark
+brew install diff-so-fancy coreutils git-town grc
 
 exit 0

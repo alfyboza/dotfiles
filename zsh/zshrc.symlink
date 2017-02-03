@@ -13,6 +13,9 @@ if [[ -r ~/.nvm/nvm.sh ]]; then
   source ~/.nvm/nvm.sh
 fi
 
+# load fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]

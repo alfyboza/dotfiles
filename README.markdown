@@ -1,5 +1,5 @@
-dotfiles: everyone has them; these are mine
-===========================================
+dotfiles: everyone has them, and these are mine
+===============================================
 
 This is a fork of [Zach Holman](https://github.com/holman)'s topic-centric [dotfiles](https://github.com/holman/dotfiles) repository.
 

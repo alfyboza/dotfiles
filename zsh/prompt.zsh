@@ -14,11 +14,11 @@ git_branch() {
 }
 
 git_dirty() {
-  if $(! git status --porcelain &>/dev/null)
+  if $(! $git status -s &> /dev/null)
   then
     echo ""
   else
-    if [[ $(git status --porcelain) == "" ]]
+    if [[ $($git status --porcelain) == "" ]]
     then
       echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
     else
@@ -29,37 +29,41 @@ git_dirty() {
 
 git_prompt_info () {
  ref=$($git symbolic-ref HEAD 2>/dev/null) || return
+# echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
  echo "${ref#refs/heads/}"
 }
 
-unpushed () {
-  $git cherry -v @{upstream} 2>/dev/null
-}
-
+# This assumes that you always have an origin named `origin`, and that you only
+# care about one specific origin. If this is not the case, you might want to use
+# `$git cherry -v @{upstream}` instead.
 need_push () {
-  if [[ $(unpushed) == "" ]]
+  if [ $($git rev-parse --is-inside-work-tree 2>/dev/null) ]
   then
-    echo " "
-  else
-    echo " with %{$fg_bold[magenta]%}unpushed%{$reset_color%} "
+    number=$($git cherry -v origin/$(git symbolic-ref --short HEAD) 2>/dev/null | wc -l | bc)
+
+    if [[ $number == 0 ]]
+    then
+      echo " "
+    else
+      echo " with %{$fg_bold[magenta]%}$number unpushed%{$reset_color%}"
+    fi
   fi
 }
 
-directory_name(){
-  echo "%{$fg_bold[cyan]%}%~%\/%{$reset_color%}"
+directory_name() {
+  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
-exit_value() {
-  test $? -ne 0 && echo "[%{$fg_bold[red]%}%?%{$reset_color%}]"
+battery_status() {
+  if [[ $(sysctl -n hw.model) == *"Book"* ]]
+  then
+    $ZSH/bin/battery-status
+  fi
 }
 
-current_host() {
-  [[ -z "$SSH_CLIENT" ]] || echo "%{$fg_bold[yellow]%}%m%{$reset_color%}: "
-}
-
-export PROMPT=$'\n$(current_host)in $(directory_name) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n$(battery_status)in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
-  export RPROMPT='$(exit_value)'
+  export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
 
 precmd() {

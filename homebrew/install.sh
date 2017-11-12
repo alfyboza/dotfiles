@@ -8,12 +8,17 @@
 # Check for Homebrew
 if test ! $(which brew)
 then
-  echo "  x You should probably install Homebrew first:"
-  echo "    https://github.com/mxcl/homebrew/wiki/installation"
-  exit
-fi
+  echo "  Installing Homebrew for you."
 
-# Install homebrew packages
-brew install diff-so-fancy coreutils git-town grc
+  # Install the correct homebrew for each OS type
+  if test "$(uname)" = "Darwin"
+  then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+  then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+  fi
+
+fi
 
 exit 0

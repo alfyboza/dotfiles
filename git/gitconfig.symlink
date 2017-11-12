@@ -1,66 +1,33 @@
-[alias]
-  discard = checkout --
-  squash = merge --squash
-  unstage = reset HEAD --
-  dsf = "!git diff --color $@ | diff-so-fancy"
-  hack = town-hack
-  kill = town-kill
-  new-pull-request = town-new-pull-request
-  prune-branches = town-prune-branches
-  rename-branch = town-rename-branch
-  repo = town-repo
-  ship = town-ship
-  sync = town-sync
-
-[color]
-  branch = auto
-  diff = auto
-  status = auto
-  ui = true
-
-[core]
-  autocrlf = input
-  editor = vim
-  excludesfile = ~/.gitignore
-
-[credential]
-  helper = osxkeychain
-
-[diff]
-  tool = Kaleidoscope
-
-[difftool]
-  prompt = false
-  tool = Kaleidoscope
-
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-
-[help]
-  autocorrect = 1
-
+# Local/private config goes in the include
+[include]
+        path = ~/.gitconfig.local
 [hub]
-
-[merge]
-  tool = Kaleidoscope
-
+        protocol = https
+[alias]
+        co = checkout
+        promote = !$ZSH/bin/git-promote
+        wtf     = !$ZSH/bin/git-wtf
+        rank-contributors = !$ZSH/bin/git-rank-contributors
+        count   = !git shortlog -sn
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore
+        editor = vim
+[apply]
+        whitespace = nowarn
 [mergetool]
-  keepBackup = false
-  prompt = false
-
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustExitCode = true
-
+        keepBackup = false
+[difftool]
+        prompt = false
+[help]
+        autocorrect = 1
 [push]
-  default = simple
-
-[tar "tbz2"]
-  command = bzip2 -z9
-
-[tar "tar.bz2"]
-  command = bzip2 -z9
-
-[user]
-  email = alfonso@al.fon.so
-  name = Alfonso Boza
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to suppress warning message
+        default = simple

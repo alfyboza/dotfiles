@@ -5,9 +5,6 @@ unbind-key C-b
 # highlight current window in status bar
 set-option -g window-status-current-fg white
 
-# fix LSOpenURLsWithRole() error on Yosemite
-set-option -g default-command "which reattach-to-user-namespace > /dev/null && reattach-to-user-namespace -l $SHELL || $SHELL"
-
 # enable vi mode
 set-window-option -g mode-keys vi
 

@@ -25,6 +25,8 @@
 --ignore-directory=is:CMakeFiles
 --ignore-directory=is:vendor
 --ignore-file=ext:bak
+--ignore-file=is:package-lock.json
+--ignore-file=is:yarn.lock
 --ignore-file=match:/~$/
 --ignore-file=match:/^#.+#$/
 --ignore-file=match:/[._].*\.swp$/
